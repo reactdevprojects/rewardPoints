@@ -11,7 +11,7 @@ const App = () => {
         {
           "id": "fjhdskajf",
           "price": 200,
-          "createdAt": new Date()
+          "createdAt": 'December 17, 2022 03:24:00'
         }
       ]
     },
@@ -22,13 +22,18 @@ const App = () => {
         {
           "id": "fjhdskajf",
           "price": 200,
-            "createdAt": new Date()
+          "createdAt": 'December 17, 2022 03:24:00'
         },
         {
-          "id": "fjhdskajf",
+          "id": "fjhdskajf3",
           "price": 234,
-					"createdAt": new Date()
-        }
+					"createdAt": 'November 17, 2022 03:24:00'
+        },
+         {
+          "id": "fjhdskajfa",
+          "price": 200,
+          "createdAt": 'December 17, 2022 03:24:00'
+        },
       ]
     }
   ]
@@ -54,7 +59,7 @@ const rewards = users.map(user => {
   const userId = user.id;
 
   const rewards = user.purchases.reduce((acc, purchase) => {
-    const month = new Date(purchase.createdAt).getMonth();
+    const month = new Date(purchase.createdAt).toLocaleString('en-US', { month: 'short' });
     const year = new Date(purchase.createdAt).getFullYear();
     const key = `${month}-${year}`;
     const newPoints = (acc[key] ?? 0) + calculatePoints(purchase.price);
