@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 const App = () => {
+
+    const [allUser, setAllUser] = useState([]);
+  useEffect(() => {
+  setTimeout(() => {
   const users =
 [
     {
@@ -38,8 +42,9 @@ const App = () => {
     }
   ]
     
-
-
+    setAllUser(users);
+    }, 2000); // Delay the execution of the function by 2 seconds (2000 milliseconds)
+  }, []);
 
 
 
@@ -55,7 +60,7 @@ function calculatePoints(price){
 }
 
 
-const allRewards = users.map(user => {
+const allRewards = allUser.map(user => {
   const userId = user.id;
 
   const rewards = user.purchases.reduce((acc, purchase) => {
