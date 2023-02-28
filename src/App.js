@@ -55,7 +55,7 @@ function calculatePoints(price){
 }
 
 
-const rewards = users.map(user => {
+const allRewards = users.map(user => {
   const userId = user.id;
 
   const rewards = user.purchases.reduce((acc, purchase) => {
@@ -71,13 +71,42 @@ const rewards = users.map(user => {
 
     
 
- console.log(rewards);
+ console.log(allRewards);
 
-  // return (
-  //   <div className="App">
-     
-  //   </div>
-  // );
+
+return (
+  <div className="App">
+    <h1>Rewards Table</h1>
+    {allRewards.map((user) => {
+      return (
+        <div key={user.userId}>
+          <h3>User ID: {user.userId}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(user.rewards).map(([month, points]) => {
+                return (
+                  <tr key={month}>
+                    <td>{month}</td>
+                    <td>{points}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      );
+    })}
+  </div>
+);
+
+  
+
 }
 
 export default App;
